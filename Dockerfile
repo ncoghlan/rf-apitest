@@ -1,6 +1,9 @@
 FROM centos:7
 MAINTAINER Nick Coghlan <ncoghlan@gmail.com>
 
+# Ensure default packages are all fully up to date
+RUN yum -y upgrade
+
 # Use the Python 2.7 Software Collection
 RUN yum -y install https://www.softwarecollections.org/en/scls/rhscl/python27/epel-7-x86_64/download/rhscl-python27-epel-7-x86_64.noarch.rpm
 
