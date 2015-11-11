@@ -20,5 +20,8 @@ RUN scl enable python27 -- bash -c "\
 # Add the test suite sources
 ADD . /srv/rf-apitest
 
-# Drop into an interactive shell prompt when run
-CMD scl enable python27 bash
+# Always run with the scl enabled
+ENTRYPOINT ["scl", "enable", "python27", "--", "bash", "-c"]
+
+# Default to running the tests included at image build time
+CMD ["apitest run /srv/rf-apitest/tests"]
